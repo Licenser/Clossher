@@ -1,4 +1,3 @@
-
 (ns net.licenser.ssh.shell
   (:use clojure.contrib.duck-streams))
 
@@ -89,18 +88,3 @@ the wait time by passing the wait argument."
 ([s wait]
     (binding [*jsch-shell-wait* wait]
       (shell-exec s))))
-
-
-(comment
-
-  (use 'net.licenser.ssh)
-  (use 'net.licenser.ssh.shell)
-
-  (with-session "user" "pass" "host45"
-    (with-shell
-      (println (shell-read-all))
-      (println (shell-exec "exec bash"))
-      (println (shell-exec "export PS1=\"\\h:\\w# \""))
-      (println (shell-exec "ls"))))
-
-  )

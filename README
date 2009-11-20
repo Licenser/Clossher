@@ -35,3 +35,38 @@ heinz@licenser.net.
 
 Also I'd like to thank the #clojure channel, who always proved to be a very good
 source for help, espcially _ato for a example how to best deal with sessions.
+
+
+== Examples ==
+
+This example shows how to use the sftp commands,c onnect to a host move around
+the directory structure, execute commands and trainfair files.
+
+  (use 'net.licenser.ssh)
+  (use 'net.licenser.ssh.sftp)
+  (with-session "user" "host" "ip"
+    (with-sftp
+      (sftp-lcd "D:/test")
+      (sftp-cd "/tmp")
+      (sftp-put "2.txt")
+      (println (sftp-pwd))
+      (println (sftp-lpwd))
+      (sftp-exec "echo `hostname` > 2.txt")
+      (sftp-lcd "D:/")
+      (println (sftp-pwd))
+      (println (sftp-lpwd))
+      (sftp-get "/tmp/2.txt")))
+
+
+This example demostrates howt he shell works, that the shell keeps 'track' of
+what happend.
+
+  (use 'net.licenser.ssh)
+  (use 'net.licenser.ssh.shell)
+
+  (with-session "user" "pass" "host45"
+    (with-shell
+      (println (shell-read-all))
+      (println (shell-exec "exec bash"))
+      (println (shell-exec "export PS1=\"\\h:\\w# \""))
+      (println (shell-exec "ls"))))

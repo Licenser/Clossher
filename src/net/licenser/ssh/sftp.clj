@@ -88,20 +88,3 @@ puts the file in the lpwd."
 (defn sftp-chown [uid path]
   "Changes the owner on a remote file, uid is the new users user ID"
   (.chown *jsch-sftp* uid path))
-
-(comment
-  (use 'net.licenser.ssh)
-  (use 'net.licenser.ssh.sftp)
-  (with-session "user" "host" "ip"
-    (with-sftp
-      (sftp-lcd! "D:/test")
-      (sftp-cd! "/tmp")
-      (sftp-put! "2.txt")
-      (println (sftp-pwd))
-      (println (sftp-lpwd))
-      (sftp-exec "echo `hostname` > 2.txt")
-      (sftp-lcd "D:/")
-      (println (sftp-pwd))
-      (println (sftp-lpwd))
-      (sftp-get "/tmp/2.txt")))
-  )
