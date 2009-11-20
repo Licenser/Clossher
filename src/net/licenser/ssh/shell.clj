@@ -28,6 +28,9 @@ shell-* functions can be used within this macro"
 
 
 (defn shell-readln
+  "Reads one line from the shell, a line is defined as either ending with a
+\newline or no input for 500 mili seconds this time can be changed by either
+binding *jsch-shell-wait* or passing the wait argument."
   ([]
     (loop [s (new StringBuilder)]
       (if (or (.ready *jsch-in*) (Thread/sleep *jsch-shell-wait*) (.ready *jsch-in*))
@@ -41,6 +44,8 @@ shell-* functions can be used within this macro"
       (shell-readln))))
 
 (defn shell-read-all
+  "Equivalent to shell-readln, just that it continues to read untill the wait
+time is exeeded. This is helpfull to read the output of a entire command."
   ([]
   (loop [s (new StringBuilder)]
     (if (or (.ready *jsch-in*) (Thread/sleep *jsch-shell-wait*) (.ready *jsch-in*))
@@ -52,12 +57,14 @@ shell-* functions can be used within this macro"
 
 
 (defn shell-wait-for-newline
+  "Waits untill a newline is printed on the shell."
   []
   (.mark *jsch-in* 1024)
   (.readLine *jsch-in*)
   (.reset *jsch-in*))
 
 (defn shell-println
+  "Writes s to the shell, adding a newline in the end."
   [s]
   (binding
     [*out* *jsch-out*]
@@ -65,12 +72,16 @@ shell-* functions can be used within this macro"
     (shell-wait-for-newline)))
 
 (defn shell-wait-for
+  "Not implemented yet!"
   [regexp]
   (if (.available *jsch-in*)
     :empty
     (first (line-seq *jsch-in*))))
 
 (defn shell-exec
+  "Executes a command on the shell and reads it's input by calling 
+shell-read-all. If your command is particuallary slow you might want to increase
+the wait time by passing the wait argument."
   ([s]
   (shell-println s)
   (shell-wait-for-newline)

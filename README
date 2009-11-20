@@ -32,3 +32,6 @@ hide most of the javaness in the SSH stuff.
 
 If you've any questions, requests, suggestions feel free to drop me a mail at
 heinz@licenser.net.
+
+Also I'd like to thank the #clojure channel, who always proved to be a very good
+source for help, espcially _ato for a example how to best deal with sessions.
