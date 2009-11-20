@@ -1,0 +1,4 @@
+ <arg value = "net.licenser.clossher" /> 
+<arg value = "net.licenser.ssh" /> 
+<arg value = "net.licenser.ssh.sftp" /> 
+<arg value = "net.licenser.ssh.shell"/>

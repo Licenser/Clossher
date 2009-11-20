@@ -1,0 +1,34 @@
+Clojure wrapper for the jsch SSH Library.
+
+For the legal stuff please see LICENSE.
+
+== What does it do ==
+
+Clossher is a wrapper for the jsch SSH library, it allows to used most of the
+SSH functions. It can execute code on a remote host, copy files forth and back
+or open shell sessions - to allow executing multiple commands in a session that
+'remember' their state (usefull for using su or things that require
+interaction).
+
+== Nice to know ==
+
+Since the underlaying jsch library is native java code clossher will work
+entirely platform indipendant.
+
+== Requirements ==
+
+You will need the jsch jar file, currently this is tested with version 0.1.42.
+The jar file can be fetched from: http://www.jcraft.com/jsch/. Most of the
+credit should go there, the wrapper just makes it nice and clojureish, trying to
+hide most of the javaness in the SSH stuff.
+
+== Known issues ==
+
+* Using exec after working with a shell-session does not work well.
+* sftp does not work with directories, sorry it seems to be a limitation of the
+  underlaying library, but I'm thinking about a workaround.
+
+== Last words ==
+
+If you've any questions, requests, suggestions feel free to drop me a mail at
+heinz@licenser.net.
