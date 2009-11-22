@@ -39,12 +39,12 @@ source for help, espcially _ato for a example how to best deal with sessions.
 
 == Examples ==
 
-This example shows how to use the sftp commands,c onnect to a host move around
+This example shows how to use the sftp commands, connect to a host move around
 the directory structure, execute commands and trainfair files.
 
   (use 'net.licenser.ssh)
   (use 'net.licenser.ssh.sftp)
-  (with-session "user" "host" "ip"
+  (with-session "user" "pass" "host"
     (with-sftp
       (sftp-lcd "D:/test")
       (sftp-cd "/tmp")
@@ -58,13 +58,13 @@ the directory structure, execute commands and trainfair files.
       (sftp-get "/tmp/2.txt")))
 
 
-This example demostrates howt he shell works, that the shell keeps 'track' of
+This example demostrates how the shell works, that the shell keeps 'track' of
 what happend.
 
   (use 'net.licenser.ssh)
   (use 'net.licenser.ssh.shell)
 
-  (with-session "user" "pass" "host45"
+  (with-session "user" "pass" "host"
     (with-shell
       (println (shell-read-all))
       (println (shell-exec "exec bash"))
