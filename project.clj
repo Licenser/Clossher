@@ -1,4 +1,4 @@
-(defproject org.clojars.heinz/Clossher "0.0.2" 
+(defproject org.clojars.heinz/clossher "0.0.3" 
   :description "Clojure SSH Library wrapper for jsch." 
   :dependencies [
     [org.clojure/clojure "1.1.0-alpha-SNAPSHOT"] 
