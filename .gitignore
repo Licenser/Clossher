@@ -1,2 +1,7 @@
-build/**
-dist/**
+nbproject/private/private.properties
+pom-generated.xml
+Manifest.txt
+Clossher.jar
+lib
+classes
+dist
