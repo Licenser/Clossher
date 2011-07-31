@@ -1,7 +1,7 @@
 (ns net.licenser.ssh
   (:import com.jcraft.jsch.JSch)
   (:import java.util.Properties)
-  (:use clojure.contrib.duck-streams))
+  (:require [clojure.contrib.duck-streams :as ds]))
 
 (declare *jsch* *jsch-config* *jsch-session*)
 

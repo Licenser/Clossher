@@ -1,5 +1,5 @@
 (ns net.licenser.ssh.shell
-  (:use clojure.contrib.duck-streams))
+  (:require [clojure.contrib.duck-streams :as ds]))
 
 (declare *jsch-shell* *jsch-in* *jsch-out*)
 
@@ -14,8 +14,8 @@ shell-* functions can be used within this macro"
                             (.openChannel net.licenser.ssh/*jsch-session* "shell")
                             (.setInputStream nil)
                             (.setOutputStream nil))]
-     (binding [*jsch-in* (reader (.getInputStream *jsch-shell*))
-             *jsch-out* (writer (.getOutputStream *jsch-shell*))]
+     (binding [*jsch-in* (ds/reader (.getInputStream *jsch-shell*))
+             *jsch-out* (ds/writer (.getOutputStream *jsch-shell*))]
        (doto *jsch-shell*
          (.connect))
        (try
